@@ -5,14 +5,17 @@
 
 * Так же понадобилось добавить публичный ключь на все машины для авторизации по SSH
 Сгенерировал ключ
+```bash
 vagrant@node4:~/.ssh$ ssh-keygen -t rsa
+```
 
 * Скопировал ключ на ноды
+```bash
 vagrant@node4:~$ cd .ssh
 vagrant@node4:~/.ssh$ vi authorized_keys 
 vagrant@node4:~/.ssh$ chmod 600 authorized_keys 
 vagrant@node4:~/.ssh$ 
-
+```
 
 
 * В group_vars/k8s_cluster поменял параметр на container_manager: containerd
@@ -20,7 +23,9 @@ vagrant@node4:~/.ssh$
 * Сгенерировал hosts.ini на основнании статьти
 
 * Запустил установку через kubespray
+```bash
 alex@upc:~/devops-projects/kuber/kubespray $ ansible-playbook -i inventory/cluster/hosts.ini --become --become-user=root cluster.yml
+```
 
 * В итоге скрипт отработал частично, не хватает памти на моей машине :( для обработки всех нод, так как нехватает памяти под весь кластер.
 ```bash
