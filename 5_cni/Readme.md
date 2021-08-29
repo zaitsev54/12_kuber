@@ -50,7 +50,7 @@ policy-my     hello-node-srv-75cbdb4d6-52spr             1/1     Running   0    
 
 Скриншот ![скрин](https://github.com/zaitsev54/12_kuber/blob/main/5_cni/3.png)
 
-
+Команды:
 ```bash
 alex@node1:~/devops-projects/kuber $ sudo kubectl run --namespace=policy-my access --rm -ti --image busybox /bin/sh
 If you don't see a command prompt, try pressing enter.
