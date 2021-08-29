@@ -44,4 +44,53 @@ kube-system   kube-scheduler-node1                       1/1     Running   2    
 kube-system   nodelocaldns-hpctv                         1/1     Running   1          100m
 policy-my     hello-node-srv-75cbdb4d6-52spr             1/1     Running   0          11m
 ```
+На скрине отображается ![скрин 1](https://github.com/zaitsev54/12_kuber/blob/main/5_cni/2.png)
 
+* проверяем доступность и дополнительные команды
+
+Скриншот ![скрин](https://github.com/zaitsev54/12_kuber/blob/main/5_cni/3.png)
+
+
+```bash
+alex@node1:~/devops-projects/kuber $ sudo kubectl run --namespace=policy-my access --rm -ti --image busybox /bin/sh
+If you don't see a command prompt, try pressing enter.
+/ # wget -q 10.233.90.24 -O -
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+/ # 
+
+alex@node1:~/devops-projects/kuber $ sudo calicoctl get nodes
+NAME    
+node1   
+
+
+alex@node1:~/devops-projects/kuber $ sudo calicoctl get ipPool
+NAME           CIDR             SELECTOR   
+default-pool   10.233.64.0/18   all()      
+
+
+alex@node1:~/devops-projects/kuber $ 
+```
